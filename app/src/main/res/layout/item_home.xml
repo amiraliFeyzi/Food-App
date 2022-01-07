@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:id="@+id/consHome"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/bg_item_home"
+        android:layout_marginTop="50dp">
+
+        <TextView
+            android:id="@+id/name_food"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="85dp"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/consHome"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="Burger" />
+
+        <TextView
+            android:id="@+id/description_food"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@+id/name_food"
+            app:layout_constraintStart_toStartOf="@+id/name_food"
+            app:layout_constraintTop_toBottomOf="@+id/name_food"
+            tools:text="Beef Burger" />
+
+        <TextView
+            android:id="@+id/price_food"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/description_food"
+            app:layout_constraintStart_toStartOf="@+id/description_food"
+            app:layout_constraintTop_toBottomOf="@+id/description_food"
+            android:layout_marginTop="12dp"
+            tools:text="$5.6" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.example.foodapp.model.imageloading.FoodImageView
+        android:id="@+id/iv_burger"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="45dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

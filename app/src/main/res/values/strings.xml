@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Food App</string>
+    <string name="get_start">Get Started</string>
+    <string name="home">Home</string>
+    <string name="cart">Cart</string>
+    <string name="search">Search</string>
+    <string name="favorite">Favorite</string>
+    <string name="categories">Categories</string>
+</resources>
