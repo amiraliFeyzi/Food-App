@@ -108,7 +108,7 @@
             />
 
         <com.google.android.material.chip.Chip
-            android:id="@+id/chip_burger3"
+            android:id="@+id/salad_chip"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:text="Salad"

@@ -5,36 +5,26 @@ import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import com.example.foodapp.databinding.FragmentHomeBinding
-import android.R.color
-import android.annotation.SuppressLint
 import android.content.res.ColorStateList
-import android.graphics.Color
-import android.widget.CompoundButton
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.foodapp.R
-import com.example.foodapp.R.color.red
-import com.example.foodapp.model.imageloading.ImageLoading
-import com.google.android.material.chip.Chip
-import com.google.android.material.chip.ChipGroup
-import org.koin.android.ext.android.inject
+import com.example.foodapp.base.BaseFragment
+import com.example.foodapp.view.main.AdapterFood
+import com.example.foodapp.view.main.MainViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class HomeFragment : Fragment(){
+class HomeFragment : BaseFragment(){
 
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
     private var category = "Burger"
-    private val viewModel:MainViewModel by viewModel()
-    val imageLoading:ImageLoading by inject()
-
-
+    private val viewModel: MainViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -52,23 +42,27 @@ class HomeFragment : Fragment(){
         binding.chipBurger.setTextColor(ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.white)))
 
         category = "Burger"
+        viewModel.getData(category)
 
+        viewModel.homeDataLiveData.observe(viewLifecycleOwner){
+            binding.rvHome.layoutManager = LinearLayoutManager(requireContext() , RecyclerView.HORIZONTAL,false)
+            binding.rvHome.adapter = AdapterFood(it , imageLoading)
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val name:String = getColoredSpanned("Delivery" , "#FF000000")
-        val food:String = getColoredSpanned("Food" , "#da6156")
-
-        binding.tvTitleSlider.setText(Html.fromHtml(name + " " + food))
-
-
-
-
+        setTextSlider()
         var isCheck = false
 
         binding.chipBurger.setOnClickListener {
             category = "Burger"
+            viewModel.getData(category)
+
+            viewModel.homeDataLiveData.observe(viewLifecycleOwner){
+                binding.rvHome.layoutManager = LinearLayoutManager(requireContext() , RecyclerView.HORIZONTAL,false)
+                binding.rvHome.adapter = AdapterFood(it , imageLoading)
+            }
             isCheck = !isCheck
             val idChipActive = binding.chipgroup.checkedChipId
             if(isCheck){
@@ -83,19 +77,19 @@ class HomeFragment : Fragment(){
                 binding.chipBurger2.chipBackgroundColor =  ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.gray))
                 binding.chipBurger2.setTextColor(ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.black)))
 
-                binding.chipBurger3.chipBackgroundColor =  ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.gray))
-                binding.chipBurger3.setTextColor(ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.black)))
+                binding.saladChip.chipBackgroundColor =  ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.gray))
+                binding.saladChip.setTextColor(ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.black)))
             }
 
             if (idChipActive == binding.chipBurger2.id){
                 binding.chipBurger.chipBackgroundColor =  ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.gray))
                 binding.chipBurger.setTextColor(ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.black)))
 
-                binding.chipBurger3.chipBackgroundColor =  ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.gray))
-                binding.chipBurger3.setTextColor(ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.black)))
+                binding.saladChip.chipBackgroundColor =  ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.gray))
+                binding.saladChip.setTextColor(ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.black)))
             }
 
-            if (idChipActive == binding.chipBurger3.id){
+            if (idChipActive == binding.saladChip.id){
                 binding.chipBurger.chipBackgroundColor =  ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.gray))
                 binding.chipBurger.setTextColor(ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.black)))
 
@@ -123,19 +117,19 @@ class HomeFragment : Fragment(){
                 binding.chipBurger2.chipBackgroundColor =  ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.gray))
                 binding.chipBurger2.setTextColor(ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.black)))
 
-                binding.chipBurger3.chipBackgroundColor =  ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.gray))
-                binding.chipBurger3.setTextColor(ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.black)))
+                binding.saladChip.chipBackgroundColor =  ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.gray))
+                binding.saladChip.setTextColor(ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.black)))
             }
 
             if (idChipActive == binding.chipBurger2.id){
                 binding.chipBurger.chipBackgroundColor =  ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.gray))
                 binding.chipBurger.setTextColor(ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.black)))
 
-                binding.chipBurger3.chipBackgroundColor =  ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.gray))
-                binding.chipBurger3.setTextColor(ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.black)))
+                binding.saladChip.chipBackgroundColor =  ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.gray))
+                binding.saladChip.setTextColor(ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.black)))
             }
 
-            if (idChipActive == binding.chipBurger3.id){
+            if (idChipActive == binding.saladChip.id){
                 binding.chipBurger.chipBackgroundColor =  ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.gray))
                 binding.chipBurger.setTextColor(ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.black)))
 
@@ -146,36 +140,41 @@ class HomeFragment : Fragment(){
             isCheck =false
         }
 
-        binding.chipBurger3.setOnClickListener {
+        binding.saladChip.setOnClickListener {
             category = "Salad"
+            viewModel.getData(category)
 
+            viewModel.homeDataLiveData.observe(viewLifecycleOwner){
+                binding.rvHome.layoutManager = LinearLayoutManager(requireContext() , RecyclerView.HORIZONTAL,false)
+                binding.rvHome.adapter = AdapterFood(it , imageLoading)
+            }
             isCheck = !isCheck
             val idChipActive = binding.chipgroup.checkedChipId
             if(isCheck){
-                binding.chipBurger3.chipBackgroundColor =  ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.red))
-                binding.chipBurger3.setTextColor(ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.white)))
+                binding.saladChip.chipBackgroundColor =  ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.red))
+                binding.saladChip.setTextColor(ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.white)))
             }else{
-                binding.chipBurger3.chipBackgroundColor = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.gray))
-                binding.chipBurger3.setTextColor(ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.black)))
+                binding.saladChip.chipBackgroundColor = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.gray))
+                binding.saladChip.setTextColor(ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.black)))
             }
 
             if (idChipActive == binding.chipBurger.id){
                 binding.chipBurger2.chipBackgroundColor =  ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.gray))
                 binding.chipBurger2.setTextColor(ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.black)))
 
-                binding.chipBurger3.chipBackgroundColor =  ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.gray))
-                binding.chipBurger3.setTextColor(ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.black)))
+                binding.saladChip.chipBackgroundColor =  ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.gray))
+                binding.saladChip.setTextColor(ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.black)))
             }
 
             if (idChipActive == binding.chipBurger2.id){
                 binding.chipBurger.chipBackgroundColor =  ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.gray))
                 binding.chipBurger.setTextColor(ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.black)))
 
-                binding.chipBurger3.chipBackgroundColor =  ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.gray))
-                binding.chipBurger3.setTextColor(ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.black)))
+                binding.saladChip.chipBackgroundColor =  ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.gray))
+                binding.saladChip.setTextColor(ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.black)))
             }
 
-            if (idChipActive == binding.chipBurger3.id){
+            if (idChipActive == binding.saladChip.id){
                 binding.chipBurger.chipBackgroundColor =  ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.gray))
                 binding.chipBurger.setTextColor(ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.black)))
 
@@ -186,17 +185,15 @@ class HomeFragment : Fragment(){
             isCheck =false
         }
 
-        viewModel.getData(category)
-
-        viewModel.HomeDataLiveData.observe(viewLifecycleOwner){
-            binding.rvHome.layoutManager = LinearLayoutManager(requireContext() , RecyclerView.HORIZONTAL,false)
-            binding.rvHome.adapter = AdapterFood(it , imageLoading)
-        }
 
 
+    }
 
+    fun setTextSlider(){
+        val name:String = getColoredSpanned("Delivery" , "#FF000000")
+        val food:String = getColoredSpanned("Food" , "#da6156")
 
-
+        binding.tvTitleSlider.setText(Html.fromHtml(name + " " + food))
 
     }
 

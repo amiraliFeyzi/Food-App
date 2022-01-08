@@ -1,6 +1,6 @@
 package com.example.foodapp.model.network
 
-import com.example.foodapp.model.model.Burger
+import com.example.foodapp.model.model.Food
 import com.example.foodapp.model.model.Slider
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import retrofit2.Retrofit
@@ -13,7 +13,7 @@ interface ApiService {
     suspend fun getSlider():List<Slider>
 
     @GET("getInformationHome.php")
-    suspend fun getDataHome(@Query("category_name") categoryName:String):List<Burger>
+    suspend fun getDataHome(@Query("category_name") categoryName:String):List<Food>
 }
 
 

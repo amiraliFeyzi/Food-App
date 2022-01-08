@@ -1,6 +1,6 @@
 package com.example.foodapp.model.model
 
-data class Burger(
+data class Food(
     val category_name: String,
     val description: String,
     val id: String,

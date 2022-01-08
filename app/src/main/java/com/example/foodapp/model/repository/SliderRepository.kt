@@ -9,9 +9,7 @@ class SliderRepository ( val sliderRemoteDataSource: SliderRemoteDataSource) {
 
     suspend fun getSlider():Flow<List<Slider>>{
         return flow {
-            val list = sliderRemoteDataSource.getSlider()
-
-            emit(list)
+            emit(sliderRemoteDataSource.getSlider())
 
         }
 

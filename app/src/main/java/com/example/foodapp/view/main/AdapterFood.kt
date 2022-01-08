@@ -5,16 +5,16 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.foodapp.databinding.ItemHomeBinding
 import com.example.foodapp.model.imageloading.ImageLoading
-import com.example.foodapp.model.model.Burger
+import com.example.foodapp.model.model.Food
 
-class AdapterFood(val data:List<Burger> , val imageLoading: ImageLoading):RecyclerView.Adapter<AdapterFood.ViewHolder>() {
+class AdapterFood(val data:List<Food>, val imageLoading: ImageLoading):RecyclerView.Adapter<AdapterFood.ViewHolder>() {
 
     inner class ViewHolder(val binding:ItemHomeBinding):RecyclerView.ViewHolder(binding.root){
-        fun bind(burger: Burger){
-            binding.nameFood.text = burger.name
-            binding.descriptionFood.text = burger.description
-            binding.priceFood.text = "$ ${burger.price}"
-            imageLoading.load(binding.ivBurger , burger.link_img)
+        fun bind(food: Food){
+            binding.nameFood.text = food.name
+            binding.descriptionFood.text = food.description
+            binding.priceFood.text = "$ ${food.price}"
+            imageLoading.load(binding.ivBurger , food.link_img)
         }
     }
 
