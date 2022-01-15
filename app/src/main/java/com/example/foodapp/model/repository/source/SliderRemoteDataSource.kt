@@ -1,6 +1,6 @@
-package com.example.foodapp.model.source
+package com.example.foodapp.model.repository.source
 
-import com.example.foodapp.model.model.Slider
+import com.example.foodapp.model.dataclass.Slider
 import com.example.foodapp.model.network.ApiService
 
 class SliderRemoteDataSource (val apiService: ApiService) {

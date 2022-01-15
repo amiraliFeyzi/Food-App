@@ -1,7 +1,8 @@
 package com.example.foodapp.model.network
 
-import com.example.foodapp.model.model.Food
-import com.example.foodapp.model.model.Slider
+import com.example.foodapp.model.dataclass.DetailFood
+import com.example.foodapp.model.dataclass.Food
+import com.example.foodapp.model.dataclass.Slider
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -14,6 +15,9 @@ interface ApiService {
 
     @GET("getInformationHome.php")
     suspend fun getDataHome(@Query("category_name") categoryName:String):List<Food>
+
+    @GET("getDetail.php")
+    suspend fun getDetailFood(@Query("id_item")id_item:String):List<DetailFood>
 }
 
 

@@ -3,9 +3,8 @@ package com.example.foodapp.view.intro
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.foodapp.databinding.ItemHomeBinding
 import com.example.foodapp.databinding.ItemIntroBinding
-import com.example.foodapp.model.model.Slider
+import com.example.foodapp.model.dataclass.Slider
 
 class IntroAdapter(val data:List<Slider>) : RecyclerView.Adapter<IntroAdapter.ViewHolder>() {
 

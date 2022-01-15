@@ -1,4 +1,4 @@
-package com.example.foodapp.model.model
+package com.example.foodapp.model.dataclass
 
 data class Slider(
     val description: String,

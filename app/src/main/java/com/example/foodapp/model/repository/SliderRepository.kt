@@ -1,7 +1,7 @@
 package com.example.foodapp.model.repository
 
-import com.example.foodapp.model.model.Slider
-import com.example.foodapp.model.source.SliderRemoteDataSource
+import com.example.foodapp.model.dataclass.Slider
+import com.example.foodapp.model.repository.source.SliderRemoteDataSource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 

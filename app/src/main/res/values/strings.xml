@@ -6,4 +6,7 @@
     <string name="search">Search</string>
     <string name="favorite">Favorite</string>
     <string name="categories">Categories</string>
+    <string name="addToCart">Add To Cart</string>
+
+
 </resources>

@@ -4,14 +4,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.foodapp.base.BaseViewModel
-import com.example.foodapp.model.model.Food
-import com.example.foodapp.model.repository.HomeRepository
+import com.example.foodapp.model.dataclass.Food
+import com.example.foodapp.model.repository.FoodRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.launch
 
-class MainViewModel(val homeRepository: HomeRepository):BaseViewModel() {
+class MainViewModel(val foodRepository: FoodRepository):BaseViewModel() {
     private val _data = MutableLiveData<List<Food>>()
     val homeDataLiveData:LiveData<List<Food>> = _data
 
@@ -19,7 +19,7 @@ class MainViewModel(val homeRepository: HomeRepository):BaseViewModel() {
     fun getData(categoryName:String){
         viewModelScope.launch (Dispatchers.IO){
             progressbarLiveData.postValue(true)
-            homeRepository.getData(categoryName)
+            foodRepository.getData(categoryName)
                 .onCompletion {
                     progressbarLiveData.postValue(false)
                 }

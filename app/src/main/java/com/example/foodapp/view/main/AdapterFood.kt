@@ -5,9 +5,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.foodapp.databinding.ItemHomeBinding
 import com.example.foodapp.model.imageloading.ImageLoading
-import com.example.foodapp.model.model.Food
+import com.example.foodapp.model.dataclass.Food
 
-class AdapterFood(val data:List<Food>, val imageLoading: ImageLoading):RecyclerView.Adapter<AdapterFood.ViewHolder>() {
+class AdapterFood(val data:List<Food>, val imageLoading: ImageLoading  , val foodEventListener: FoodEventListener):RecyclerView.Adapter<AdapterFood.ViewHolder>() {
 
     inner class ViewHolder(val binding:ItemHomeBinding):RecyclerView.ViewHolder(binding.root){
         fun bind(food: Food){
@@ -15,6 +15,10 @@ class AdapterFood(val data:List<Food>, val imageLoading: ImageLoading):RecyclerV
             binding.descriptionFood.text = food.description
             binding.priceFood.text = "$ ${food.price}"
             imageLoading.load(binding.ivBurger , food.link_img)
+
+            binding.consroot.setOnClickListener {
+                foodEventListener.onClickFood(food)
+            }
         }
     }
 
@@ -27,4 +31,9 @@ class AdapterFood(val data:List<Food>, val imageLoading: ImageLoading):RecyclerV
     }
 
     override fun getItemCount(): Int = data.size
+
+
+    interface FoodEventListener{
+        fun onClickFood(food: Food)
+    }
 }
