@@ -1,7 +1,7 @@
 package com.example.foodapp.model.imageloading
 
-import com.facebook.drawee.view.SimpleDraweeView
+import com.example.foodapp.customviews.imageview.FoodImageView
 
 interface ImageLoading {
-    fun load(imageView: FoodImageView , link:String)
+    fun load(imageView: FoodImageView, link:String)
 }

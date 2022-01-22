@@ -51,11 +51,35 @@ class DetailFragment : BaseFragment() {
 
         binding.ivFavorite.setOnClickListener {
             food?.let{food->
-                viewModel.addFoodToDb(food)
+                food.isFavorite = !food.isFavorite
+                if (food.isFavorite){
+                    viewModel.addFoodToDb(food)
+                    Snackbar.make(it , "This Food Added to Favorite" , Snackbar.LENGTH_SHORT).show()
+                }else{
+                    viewModel.deleteFoodFromDb(food)
+                    Snackbar.make(it , "This Food Delete From Favorite" , Snackbar.LENGTH_SHORT).show()
 
-                Snackbar.make(it , "This Food Added to Favorite" , Snackbar.LENGTH_SHORT).show()
+                }
+
 
             }
+        }
+
+
+        binding.addToCartBtn.setOnClickListener {
+            food?.let {food ->
+                viewModel.addToCart(food.id.toString() ,food.name , food.price.toString() , food.link_img )
+
+                viewModel.addCartLiveData.observe(viewLifecycleOwner){responde->
+                    if (responde.equals("OK")){
+                        Snackbar.make(it , "Added To Cart" , Snackbar.LENGTH_SHORT).show()
+
+                    }else{
+                        Snackbar.make(it , "No Added To Cart" , Snackbar.LENGTH_SHORT).show()
+                    }
+                }
+            }
+
         }
 
     }

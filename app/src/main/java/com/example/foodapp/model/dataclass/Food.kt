@@ -12,8 +12,10 @@ data class Food(
     val category_name: String,
     val description: String?,
     @PrimaryKey(autoGenerate = true)
-    val id: String,
+    val id: Int,
     val link_img: String,
     val name: String,
-    val price: String
-) : Parcelable
+    val price: Float
+) : Parcelable{
+    var isFavorite = false
+}

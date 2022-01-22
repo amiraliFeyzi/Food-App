@@ -13,4 +13,7 @@ interface FoodRepository {
     suspend fun getData(categoryName:String): Flow<List<Food>>
 
     suspend fun getDetailFood(id_item:String):Flow<List<DetailFood>>
+
+    fun deleteFood(food: Food)
+
 }

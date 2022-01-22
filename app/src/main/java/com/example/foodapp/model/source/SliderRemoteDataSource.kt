@@ -1,4 +1,4 @@
-package com.example.foodapp.model.repository.source
+package com.example.foodapp.model.source
 
 import com.example.foodapp.model.dataclass.Slider
 import com.example.foodapp.model.network.ApiService

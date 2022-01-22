@@ -1,6 +1,5 @@
 package com.example.foodapp.view.main
 
-import android.content.Intent
 import android.os.Bundle
 import android.text.Html
 import android.view.LayoutInflater
@@ -16,13 +15,11 @@ import com.example.foodapp.R
 import com.example.foodapp.base.BaseFragment
 import com.example.foodapp.base.EXTRA_KEY_DATA
 import com.example.foodapp.model.dataclass.Food
-import com.example.foodapp.view.detail.DetailFragment
-import com.example.foodapp.view.main.AdapterFood
-import com.example.foodapp.view.main.MainViewModel
+import com.example.foodapp.view.common.FoodEventListener
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class HomeFragment : BaseFragment() , AdapterFood.FoodEventListener{
+class HomeFragment : BaseFragment() , FoodEventListener{
 
 
     private var _binding: FragmentHomeBinding? = null
@@ -169,11 +166,15 @@ class HomeFragment : BaseFragment() , AdapterFood.FoodEventListener{
         return input
     }
 
+
     override fun onClickFood(food: Food) {
         val bundle = Bundle()
         bundle.putParcelable(EXTRA_KEY_DATA , food)
         this.findNavController().navigate(R.id.action_homeFragment_to_detailFragment , bundle)
+    }
 
+    override fun onLongClickFood(food: Food) {
+        TODO("Not yet implemented")
     }
 
 

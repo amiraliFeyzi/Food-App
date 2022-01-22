@@ -66,4 +66,23 @@ interface FoodView{
         }
     }
 
+
+    fun showEmptyState(layoutResId:Int):View?{
+        rootView?.let {
+            viewContext?.let { viewContext->
+                var emptyState= it.findViewById<View>(R.id.empty_state_root)
+
+                if (emptyState == null){
+                    emptyState = LayoutInflater.from(viewContext).inflate(layoutResId , rootView , false)
+                    it.addView(emptyState)
+                }
+
+                emptyState.visibility = View.VISIBLE
+                return emptyState
+
+            }
+        }
+        return null
+    }
+
 }

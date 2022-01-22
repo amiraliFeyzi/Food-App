@@ -1,4 +1,4 @@
-package com.example.foodapp.model.imageloading
+package com.example.foodapp.customviews.imageview
 
 import android.content.Context
 import android.util.AttributeSet

@@ -7,6 +7,11 @@
     <string name="favorite">Favorite</string>
     <string name="categories">Categories</string>
     <string name="addToCart">Add To Cart</string>
+    <string name="favoriteEmptyStateItem">There is no item in the Favorites </string>
+    <string name="cartEmptyStateItem">There is no item in the Cart </string>
+    <string name="pay">Pay All</string>
+    <string name="deleteCart">Delete Food</string>
+
 
 
 </resources>

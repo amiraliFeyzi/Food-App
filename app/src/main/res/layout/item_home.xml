@@ -58,7 +58,7 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <com.example.foodapp.model.imageloading.FoodImageView
+    <com.example.foodapp.customviews.imageview.FoodImageView
         android:id="@+id/iv_burger"
         android:layout_width="170dp"
         android:layout_height="170dp"

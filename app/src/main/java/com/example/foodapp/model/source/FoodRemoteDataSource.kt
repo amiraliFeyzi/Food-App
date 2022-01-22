@@ -1,4 +1,4 @@
-package com.example.foodapp.model.repository.source
+package com.example.foodapp.model.source
 
 import com.example.foodapp.model.dataclass.DetailFood
 import com.example.foodapp.model.dataclass.Food
@@ -16,5 +16,8 @@ class FoodRemoteDataSource(val apiService: ApiService):FoodDataSource {
     override suspend fun getData(categoryName:String):List<Food> = apiService.getDataHome(categoryName)
 
     override suspend fun getDetailFood(id_item:String):List<DetailFood> = apiService.getDetailFood(id_item)
+    override  fun deleteFood(food: Food) {
+        TODO("Not yet implemented")
+    }
 
 }

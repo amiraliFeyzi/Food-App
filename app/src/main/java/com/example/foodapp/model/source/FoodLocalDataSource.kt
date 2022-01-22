@@ -1,4 +1,4 @@
-package com.example.foodapp.model.repository.source
+package com.example.foodapp.model.source
 
 import com.example.foodapp.model.database.FoodDao
 import com.example.foodapp.model.dataclass.DetailFood
@@ -17,4 +17,6 @@ class FoodLocalDataSource(val foodDao: FoodDao):FoodDataSource {
     override suspend fun getDetailFood(id_item: String): List<DetailFood> {
         TODO("Not yet implemented")
     }
+
+    override  fun deleteFood(food: Food)  = foodDao.deleteFood(food)
 }

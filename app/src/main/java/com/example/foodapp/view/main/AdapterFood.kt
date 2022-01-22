@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.foodapp.databinding.ItemHomeBinding
 import com.example.foodapp.model.imageloading.ImageLoading
 import com.example.foodapp.model.dataclass.Food
+import com.example.foodapp.view.common.FoodEventListener
 
 class AdapterFood(val data:List<Food>, val imageLoading: ImageLoading  , val foodEventListener: FoodEventListener):RecyclerView.Adapter<AdapterFood.ViewHolder>() {
 
@@ -33,7 +34,5 @@ class AdapterFood(val data:List<Food>, val imageLoading: ImageLoading  , val foo
     override fun getItemCount(): Int = data.size
 
 
-    interface FoodEventListener{
-        fun onClickFood(food: Food)
-    }
+
 }

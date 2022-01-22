@@ -1,5 +1,6 @@
 package com.example.foodapp.model.imageloading
 
+import com.example.foodapp.customviews.imageview.FoodImageView
 import com.facebook.drawee.view.SimpleDraweeView
 import java.lang.IllegalStateException
 

@@ -1,5 +1,6 @@
 package com.example.foodapp.model.network
 
+import com.example.foodapp.model.dataclass.Cart
 import com.example.foodapp.model.dataclass.DetailFood
 import com.example.foodapp.model.dataclass.Food
 import com.example.foodapp.model.dataclass.Slider
@@ -18,6 +19,20 @@ interface ApiService {
 
     @GET("getDetail.php")
     suspend fun getDetailFood(@Query("id_item")id_item:String):List<DetailFood>
+
+    @GET("Search.php")
+    suspend fun getSearch(@Query("name")nameFood:String):List<Food>
+
+    @GET("cart.php")
+    suspend fun addToCart(@Query("id_item")id_item: String , @Query("name")nameFood: String , @Query("link_img")link_img:String ,
+    @Query("price")price:String):String
+
+    @GET("getCart.php")
+    suspend fun getCart():List<Cart>
+
+    @GET("deleteCart.php")
+    suspend fun deleteCart(@Query("id_item")id_item: String , @Query("name")nameFood: String , @Query("link_img")link_img:String ,
+                   @Query("price" )price:String):String
 }
 
 
